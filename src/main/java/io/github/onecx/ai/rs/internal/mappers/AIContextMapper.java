@@ -68,7 +68,6 @@ public interface AIContextMapper {
             @MappingTarget AIContext entity);
 
     @Mapping(target = "version", source = "modificationCount")
-    @Mapping(target = "llmProvider", ignore = true)
     @Mapping(target = "vectorDb", ignore = true)
     @Mapping(target = "documents", ignore = true)
     @Mapping(target = "removeDocumentsItem", ignore = true)
@@ -76,6 +75,8 @@ public interface AIContextMapper {
     @Mapping(target = "removeUrlsItem", ignore = true)
     @Mapping(target = "dbs", ignore = true)
     @Mapping(target = "removeDbsItem", ignore = true)
+    @Mapping(source = "provider", target = "llmProvider")
+    @Mapping(target = "llmProvider.version", ignore = true)
     public abstract AIContextDTO map(AIContext aiContext);
 
     @Mapping(target = "description", ignore = true)
